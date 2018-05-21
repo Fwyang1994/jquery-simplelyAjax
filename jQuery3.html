@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img src="img/1.jpg" alt="蒲苇">
+</body>
+<script src="jquery/jquery-3.3.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    //1.向页面众已经存在的元素添加事件
+    $("img").click(function(event){
+      var num = Math.floor(Math.random()*3+1);//创建1-3之间的随机数
+      $(this).attr("src","img/"+num+".jpg");
+      //解除事件绑定
+      $(this).unbind("click");
+    });
+  });
+</script>
+</html>

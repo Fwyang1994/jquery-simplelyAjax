@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax访问HTML文件</title>
+    <script src="../jquery/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h2>青州市科拓环保设备有限公司</h2>
+<ul>
+    <li><a href="Ajax2-culture.html">企业文化</a></li>
+    <li><a href="Ajax2-produce.html">主要产品</a></li>
+    <li><a href="Ajax2-about.html">联系我们</a></li>
+</ul>
+<div id="content"></div>
+</body>
+<script src="../jquery/jquery-3.3.1.min.js"> </script>
+<script>
+    window.onload = function () {
+        //获取页面中所有的a元素，返回对象数组
+        var aNodes = document.getElementsByTagName('a');
+        //获取当前页面需要更新的DOM节点
+        var content = document.getElementById("content");
+        //给所有的a元素添加点击事件，每个链接都会访问一个HTML文件
+        for (var i=0; i<aNodes.length; i++){
+            aNodes[i].onclick = function () {
+                var request = new XMLHttpRequest();
+                request.open('GET',this.href+'?'+(new Date()),true);
+                request.send(null);
+                request.onreadystatechange = function () {
+                    if (request.readyState == 4 && request.status == 200){
+                        content.innerHTML = request.responseText;
+                    }
+                }
+                return false;
+            }
+        }
+    }
+</script>
+</html>

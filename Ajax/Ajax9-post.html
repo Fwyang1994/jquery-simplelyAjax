@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.post函数</title>
+    <script src="../jquery/jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+<h3>用户登陆</h3>
+<form action="">
+    <label for="name">用户名称：</label><input type="text" name="name" id="name"><br>
+    <label for="pwd">用户密码：</label><input type="password" name="pwd" id="pwd"><br>
+    <button type="button" name="submit" id="submit">登陆</button>
+</form>
+</body>
+<script>
+    $(function () {
+        $("#name").change(function (event) {
+            $.post(
+                "check.php",//请求的URL地址，处理脚本
+                {"name": $(this).val()},//发送给处理脚本的数据，js对象格式
+                function (data) {       //响应成功success的回调函数
+                    $("#name").next().empty();//清空前一次显示结果
+                    $("#name").after(data);//输出响应结果
+
+                }
+            );
+        });
+    })
+</script>
+</html>

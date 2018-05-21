@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简单动画效果</title>
+</head>
+<style>
+#img{
+  width: 0;opacity: 0;
+}
+#content{
+  display: none;
+}
+</style>
+<body>
+  <button type="button" name="button" id="btn1">显示图片与简介</button>
+  <img src="img/1.jpg" id="img" alt="">
+  <div id="content">
+    <h3>蒲苇</h3>
+    <p>丛生植物</p>
+    <p>禾本科蒲苇属下的植物，原产于阿根廷（Argentina）和巴西（Brazil），分布在华北、华中、华南、华东及东北地区。蒲苇茎丛生，雌雄异株，叶多聚生于基部，极狭，矮蒲苇性强健，耐寒，喜温暖、阳光充足及湿润气候。</p>
+  </div>
+</body>
+<script src="jquery/jquery-3.3.1.min.js"> </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#btn1").click(function(){
+      $("#img").animate({  //1.动画属性对象（参数1，必选）
+        width:200,    //属性必须是css属性，只支持数值型属性，不支持字体颜色
+        opacity:1,    //属性值单位：默认为像素 px
+        "border-radius":25
+      },{
+        duration: 4000,
+        complete:function(event){
+          $(this).css("box-shadow","5px 5px 2px #444");
+          $("#content").slideDown(3000,function(){
+            $(this).children("h3").css({"font-size":"28px","color":"red"});
+          });
+        }
+      });
+    });
+  });
+</script>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name":"peter",
+  "salary":9999,
+  "lesson":["php","html","jQuery"],
+  "website":{
+    "siteName":"peter",
+    "domain":"www.qzketuo.com"
+  }
+}

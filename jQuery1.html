@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jquery1</title>
+</head>
+<body>
+  <h3 id="ketuo">科拓环保</h3>
+  <h3 style="color:red;">百度</h3>
+  <h3 class="demo">科拓环保</h3>
+  <h3 class="demo">百度</h3>
+  <p>旭诺花卉</p>
+</body>
+<script src="jquery/jquery-3.3.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<script type="text/javascript">
+  $(Document).ready(function(){
+
+    $("h3").wrap("<i></i>");
+    // $("h3.demo").css("color","blue");
+    $("#ketuo").css("color","yellow");
+    $("h3").wrapInner("<span style='color:rgb(37, 111, 244)'></span>");
+    $("h3.demo").wrapAll("<a href='http://www.qzketuo.com'> </a>");
+    // $("h3:first").wrapAll("<a href="www.baidu.com"><div></div></a>");
+    // $(document.body).remove();//删除选中的对象
+    // $(".demo").empty();//删除class="demo"的元素
+    // $("h3.demo:last").after("<p>友情链接</p>");
+
+    //向当前页面添加一个div元素
+    $(document.body).append("<div id='linklist' style='border:1px solid red;'>友情链接</div>");
+    //将当前页面中的所有a元素，全部复制到新创建的div中
+    $("a").clone().appendTo("#linklist");
+    // 给div中的所有a元素之后加一个~
+    $("#linklist > a").after("<h1>~</h1>");
+    // 移除div中所有的h3
+    $("div *").remove("h1");
+  });
+</script>
+</html>

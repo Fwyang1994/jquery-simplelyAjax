@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>纯文本数据解析</title>
+</head>
+<body>
+<a href="../ajaxfile/ketuo.txt">青州市科拓环保设备有限公司</a>
+<p></p>
+</body>
+<script src="../jquery/jquery-3.3.1.min.js"> </script>
+<script>
+    window.onload = function () {
+        document.getElementsByTagName('a')[0].onclick = function () {
+            //1.获取xhr对象
+            var request = new XMLHttpRequest();
+            //2.配置ajax请求参数：请求类型，请求的URL资源，请求方式-默认为true-即异步
+            // request.open('GET',this.href,true);//在href里加上Unix时间戳，可以防止因浏览器缓存导致的不能实时更新页面内容问题。
+            request.open('GET',this.href+'?='+(new Date()),true);
+            //3.将ajax请求发送到服务器，GET请求不需要参数，可为空或者传入null
+            request.send(null);
+            //4.ajax对象的事件属性onreadystatechange,不断监听服务器端的响应
+            request.onreadystatechange = function () {
+                //5.当请求状态为4，并且响应码是200时，表示服务器响应成功，并返回了用户数据
+                if (request.readyState == 4 && request.status == 200){
+                    //6.根据数据类型，来更新当前页面中的DOM节点的信息
+                    document.getElementsByTagName("p")[0].innerHTML=request.responseText;
+                }
+            }
+            //取消a元素的默认点击行为；
+            return false;
+        }
+    }
+</script>
+</html>

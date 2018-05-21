@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json数据的访问</title>
+</head>
+<style>
+    span{color: blue}
+</style>
+<body>
+<button>myInfo</button>
+<div>
+    <h3>姓名：<span id="name"></span></h3>
+    <h3>工资：<span id="salary"></span></h3>
+    <h3>课程：<span id="lesson"></span></h3>
+    <h3>网站：<span id="website"></span></h3>
+    <h3>域名：<span id="domain"></span></h3>
+</div>
+</body>
+<script>
+    window.onload = function () {
+        document.getElementsByTagName('button')[0].onclick = function () {
+            var request = new XMLHttpRequest();
+            request.open('GET','demo.json'+'?='+(new Date()),true);
+            request.send(null);
+            request.onreadystatechange = function(){
+                if (request.readyState == 4 && request.status == 200){
+                    // var data = eval("("+json+")");
+                    var data = JSON.parse(request.responseText);//JSON.parse()方法，用于将一个JSON字符串转换为对象
+                    document.getElementById("name").innerHTML = data.name;
+                    document.getElementById("salary").innerHTML = data.salary;
+                    document.getElementById("lesson").innerHTML = data.lesson[0];
+                    document.getElementById("website").innerHTML = data.website.siteName;
+                    document.getElementById("domain").innerHTML = data.website.domain;
+                }
+            }
+
+
+        }
+    }
+</script>
+</html>

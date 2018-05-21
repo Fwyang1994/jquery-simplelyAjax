@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery函数实现ajax操作</title>
+    <script src="../jquery/jquery-3.3.1.min.js"></script>
+</head>
+
+<style>
+    span{color: blue}
+</style>
+<body>
+<button>myInfo</button>
+<div>
+    <h3>姓名：<span id="name"></span></h3>
+    <h3>工资：<span id="salary"></span></h3>
+    <h3>课程：<span id="lesson"></span></h3>
+    <h3>网站：<span id="website"></span></h3>
+    <h3>域名：<span id="domain"></span></h3>
+</div>
+</body>
+<script>
+// $.ajax()函数：参数是一个对象(只有一个参数)
+    $(function () {
+        $("button").click(function () {
+            $.ajax({
+                type: "GET",    //当前http的请求方法
+                url: "demo.json",//要获取数据的URL
+                data: '?='+(new Date()),     //在URL后面添加的数据（可以是null）
+                dataType: "json",//将获取到的数据当做json类型处理
+                success: function (data) {  //完成时调用这个回调函数
+                    $("#name").text(data.name);
+                    $("#salary").text(data.salary);
+                    $("#lesson").text(data.lesson[1]);
+                    $("#website").text(data.website.siteName);
+                    $("#domain").text(data.website.domain);
+                }
+            });
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动画特效-显示与隐藏</title>
+</head>
+<style media="screen">
+  #img{
+    float: left;
+    /* 图片左浮动 */
+  }
+  #content{
+    margin-left: 200px;
+    width: 400px;
+    display: none;
+    /* 初始不显示 */
+  }
+</style>
+<body>
+  <div id="wrap">
+    <img src="img/1.jpg" width="200px" alt="蒲苇" id="img">
+    <div id="content">
+      <h3>蒲苇</h3>
+      <p>禾本科蒲苇属下的植物，原产于阿根廷（Argentina）和巴西（Brazil），分布在华北、华中、华南、华东及东北地区。蒲苇茎丛生，雌雄异株，叶多聚生于基部，极狭，矮蒲苇性强健，耐寒，喜温暖、阳光充足及湿润气候。</p>
+    </div>
+  </div>
+  <div style="clear:both">
+    <!-- <input type="button" name="" value="单击隐藏"> -->
+    <button type="button" name="button" id="btn">显示简介</button>
+  </div>
+
+</body>
+<script src="jquery/jquery-3.3.1.min.js"> </script>
+<script>
+$(document).ready(function(){
+  $("#btn").click(function(){
+    if($(this).text() == "显示简介"){
+      $("#content").show();
+      $(this).text("隐藏简介");
+    }
+    else {
+      $("#content").hide();
+      $(this).text("显示简介");
+    }
+  });
+});
+</script>
+</html>

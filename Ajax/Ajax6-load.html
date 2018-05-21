@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.load()函数</title>
+    <script src="../jquery/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+    span{color: brown}
+    div{border: 1px solid rebeccapurple}
+</style>
+<body>
+<button>点击查看</button>
+<div></div>
+</body>
+<script>
+    // jQuery.load(url,{},function(){})
+    $(function () {
+
+        $("button").click(function () {
+            //1.获取纯文本文件的内容
+            // $("div:first").load("hello.txt");
+
+            //2.获取HTML文件的内容，可以使用jQuery选择器，按需获取
+            // $("div:first").load("Ajax6-hello.html");  //获取HTML文件的全部内容
+            // $("div:first").load("Ajax6-hello.html p:first","?="+(new Date()));    //获取第一个p元素
+            // $("div:first").load("Ajax6-hello.html p:eq(1)","?="+(new Date()));
+            // $("div:first").load("Ajax6-hello.html p:odd","?="+(new Date()));//获取序号为奇数的所有p元素
+
+            //3.获取XML文件中的数据，与访问HTML一样，也可以使用选择器
+            // $("div:first").load("who.xml");//返回XML中的全部内容，在同一行中显示
+            // $("div:first").load("who.xml work");//显示指定标签名的数据
+        //     $("div:first").load("who.xml work",function () {  //可以使用回调函数
+        //         $(this).css({"font-size":"28px","color":"red"});
+        //     });
+
+            //4.获取json数据，json不能直接使用，必须要通过回调函数来进行解析后再使用
+            //将获取到的json字符串解析为js对象
+            $("div:first").load("demo.json",function (data) {
+                var jsonObj = JSON.parse(data);
+                $(this).empty()     //清空当前显示的json字符串内容
+                    .append("<p>姓名：<span>"+jsonObj.name+"</span></p>")
+                    .append("<p>工资：<span>"+jsonObj.salary+"</span></p>")
+                    .append("<p>课程：<span>"+jsonObj.lesson+"</span></p>")
+                    .append("<p>网站：<span>"+jsonObj.website.siteName+"</span></p>")
+                    .append("<p>域名：<span>"+jsonObj.website.domain+"</span></p>");
+
+            })
+
+        });
+
+    })
+</script>
+</html>

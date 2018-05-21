@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+    <name>姓名：peter</name>
+    <sex>性别：男</sex>
+    <lesson>课程：PHP</lesson>
+    <job>职位：讲师</job>
+    <work>幼儿园大班</work>
+</info>

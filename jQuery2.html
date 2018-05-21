@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2 style="color:rgb(98, 14, 209)">jquery事件与函数，绑定事件bind()</h2>
+  <img src="1.jpg" alt="蒲苇">
+  <!-- <img src="2.jpg" alt="细叶芒">
+  <img src="3.jpg" alt="银叶菊"> -->
+  <h3></h3>
+  <div></div>
+  <button type="button" name="button">变变变</button>
+</body>
+<script src="jquery/jquery-3.3.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // 1.向页面中已存在的元素添加事件
+    $("img").click(function(event){
+      // $(this).attr("{'src':'2.jpg','alt':'细叶芒'}")；
+      $("h3").text($(this).attr("alt"));
+    });
+    // 2.用脚本创建的元素添加事件
+    $("button").click(function(event){
+      $("div").html("<img id='xiyemang' src='2.jpg' alt='细叶芒' /><h3 id='1'></h3>");      
+      $("#xiyemang").bind("click",function(){
+        $("#1").wrapInner($(this).attr("alt") );
+      });
+    });
+  });
+</script>
+</html>

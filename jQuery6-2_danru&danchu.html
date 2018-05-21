@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>淡入与淡出</title>
+</head>
+<style media="screen">
+  #group1    img{display: none;}
+
+</style>
+<body>
+  <div id="group1">
+    <button id="fadeIn">1.淡入</button>
+    <img src="img/1.jpg" alt="">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg" alt="">
+  </div>
+  <div id="group2">
+    <button id="fadeOut">2.淡出</button>
+    <img src="img/1.jpg" alt="">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg" alt="">
+  </div>
+  <div id="group3">
+    <button id="fadeToggle">3.淡入\淡出自动切换</button>
+    <img src="img/1.jpg" alt="">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg" alt="">
+  </div>
+  <div id="group4">
+    <button id="fadeTo">4.设置褪色级别(0~1)</button>
+    <img src="img/1.jpg" alt="">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg" alt="">
+  </div>
+
+</body>
+<script src="jquery/jquery-3.3.1.min.js"> </script>
+<script>
+  $(document).ready(function(){
+    //1.danru
+    $("#fadeIn").click(function(event){
+      $("#group1 img:first").fadeIn("slow");
+      $("#group1 img:eq(1)").fadeIn("fast");
+      $("#group1 img:last").fadeIn("4000");
+      //2.danchu
+      $("#fadeOut").click(function(event){
+        $("#group2 img:first").fadeOut("slow");
+        $("#group2 img:eq(1)").fadeOut("fast");
+        $("#group2 img:last").fadeOut("4000",function(){
+          alert("dancchusec!!");
+        });
+        //3.danru/danchu auto
+        $("#fadeToggle").click(function(){
+          $("#group3 img:first").fadeToggle("slow");
+          $("#group3 img:eq(1)").fadeToggle("fast");
+          $("#group3 img:last").fadeToggle(5000);
+        });
+        //4.tuise level set!(0~1)
+        $("#fadeTo").click(function(){
+          $("#group4 img:first").fadeTo("slow",0.8);
+          $("#group4 img:eq(1)").fadeTo("fast",0.5);
+          $("#group4 img:last").fadeTo(5000,0.2);
+        });
+
+      });
+    });
+  });
+</script>
+</html>

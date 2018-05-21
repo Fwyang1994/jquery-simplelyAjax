@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>下滑展开</title>
+</head>
+<style media="screen">
+  #content{
+    width: 400px;
+    display: none;
+  }
+  #wrap img{
+    width: 200px;
+  }
+</style>
+<body>
+  <div id="wrap">
+    <div id="content">
+      <h3>蒲苇</h3>
+      <p>丛生植物</p>
+      <p>禾本科蒲苇属下的植物，原产于阿根廷（Argentina）和巴西（Brazil），分布在华北、华中、华南、华东及东北地区。蒲苇茎丛生，雌雄异株，叶多聚生于基部，极狭，矮蒲苇性强健，耐寒，喜温暖、阳光充足及湿润气候。</p>
+    </div>
+    <img src="img/1.jpg" alt="">
+  </div>
+</body>
+<script src="jquery/jquery-3.3.1.min.js"> </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#wrap img").bind("click",function(){
+      // $("#content").slideDown("slow");
+      // slideDown()以滑动的方式显示隐藏的被选元素
+      // slideUp()以滑动的方式隐藏被选的元素（如果元素已经显示出来的话）
+      // slideToggle()自动切换显示或隐藏效果，以滑动的方式
+      $("#content").slideDown("slow",function(){
+        $("#wrap img").fadeOut("slow",function(){
+          $(this).attr("src","img/2.jpg");
+          $(this).fadeIn("slow");
+          $("#content h3").css("color","red");
+        })
+      })
+    });
+  });
+</script>
+</html>
