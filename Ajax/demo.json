@@ -4,6 +4,7 @@
   "lesson":["php","html","jQuery"],
   "website":{
     "siteName":"peter",
-    "domain":"www.qzketuo.com"
+    "domain":"www.qzketuo.com",
+    "dns": "8.8.8.8"
   }
 }
